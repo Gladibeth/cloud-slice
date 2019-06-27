@@ -1,0 +1,27 @@
+!!!
+%html
+  %header
+    = render 'app/layouts/head'
+    %link{ rel: 'stylesheet', href: 'https://cdn.linearicons.com/free/1.0.0/icon-font.min.css' }
+    %link{ rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css' }
+  %body
+    %section.login-cloud
+      .content-back
+        = image_tag '/assets/app/vectores_services'
+        -# %img.img-fluid{:alt => "", :src => "assets/themes/Cloud/vectores_services.png", :style => "width: 100%;"}/
+      %div
+        .content-logo
+          .content-fix
+            = image_tag '/assets/app/menu_fix_logo'
+            -# %img{:alt => "logo slice", :src => "assets/themes/Cloud/menu_fix_logo.png"}/
+        .content-form
+          .border-form
+            %form.form-login{:action => ""}
+              %div
+                %label{:for => "email"} Emailx
+                %input#email{:placeholder => "Email", :type => "email"}/
+              %div
+                %label{:for => "password"} Password
+                %input#password{:placeholder => "Password", :type => "password"}/
+              .btn-submit
+                %input.btn.btn-primary{:type => "submit", :value => "Submit"}/

@@ -1,0 +1,62 @@
+!!!
+%html
+  %header
+    = render 'app/layouts/head'
+    %link{ rel: 'stylesheet', href: 'https://cdn.linearicons.com/free/1.0.0/icon-font.min.css' }
+    %link{ rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css' }
+  %body
+    %section.login-cloud
+      .content-back
+        // = image_tag '/assets/app/vectores_services'
+      %div
+        .content-logo
+          .content-fix
+            = image_tag '/assets/app/menu_fix_logo'
+        %div
+          .content-card
+            .project-cloud
+              %a{:href => "#"}
+                %p.title-card
+                  %strong Cuentas
+                .col-projects
+                  - @accounts.each_with_index do |account, index|
+                    .card-project
+                      %p
+                        %strong 
+                          Cuenta: 
+                        #{account.name}
+                      %p 
+                        %strong 
+                          Fecha: 
+                        #{account.date.strftime('%d/%m/%Y')}
+                 
+                 
+            .project-cloud
+              %a{:href => "#"}
+                %p.title-card
+                  %strong Planes
+                .col-projects
+                  - @plans.each_with_index do |plan, index|
+                    .card-project
+                      %p
+                        %strong Plan
+                        #{plan.name}
+                      %p Fecha
+                      #{plan.date.strftime('%d/%m/%Y')}
+    / Button trigger modal
+    %button.btn.btn-primary{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
+      Launch demo modal
+    / Modal
+    #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
+      .modal-dialog{:role => "document"}
+        .modal-content
+          .modal-header
+            %h5#exampleModalLabel.modal-title Modal title
+            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+              %span{"aria-hidden" => "true"} ×
+          .modal-body
+            \...
+          .modal-footer
+            %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+            %button.btn.btn-primary{:type => "button"} Save changes
+

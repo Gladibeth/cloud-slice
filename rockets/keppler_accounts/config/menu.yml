@@ -1,0 +1,23 @@
+menu:
+  keppler_accounts:
+    name: Keppler Accounts
+    current: ['/']
+    url_path: /
+    icon: rocket
+    model: User
+    environment: all
+    position: 4
+    submenu:
+      - account:
+          name: accounts
+          url_path: /admin/accounts/accounts
+          icon: layers
+          current: ['/admin/accounts/accounts']
+          model: KepplerAccounts::Account
+
+      # - new:
+      #     name: + Add new module
+      #     url_path: /url_path
+      #     current: ['/current_path']
+      #     enviroment: development
+      #     model: User

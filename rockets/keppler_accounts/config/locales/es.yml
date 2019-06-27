@@ -1,0 +1,22 @@
+es:
+  keppler:
+    sidebar-menu:
+      keppler-accounts: accounts
+      keppler-accounts-submenu:
+        accounts: Accounts
+    permissions:
+    models:
+      singularize:
+        account: account
+      pluralize:
+        accounts: accounts
+    modules:
+      admin/accounts: Accounts
+    messages:
+    actions:
+  activerecord:
+    attributes:
+    errors:
+      messages:
+  errors:
+  helpers:
