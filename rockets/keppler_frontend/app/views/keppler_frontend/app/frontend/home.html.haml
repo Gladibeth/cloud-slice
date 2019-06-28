@@ -15,48 +15,59 @@
         %div
           .content-card
             .project-cloud
-              %a{:href => "#"}
+              = link_to app_account_path do
                 %p.title-card
                   %strong Cuentas
                 .col-projects
                   - @accounts.each_with_index do |account, index|
+                    %a.card-project{"data-target" => "#account-#{index}", "data-toggle" => "modal"}
+                      %p
+                        %strong 
+                          Cuenta: 
+                        = account.name
+                      %p 
+                        %strong 
+                          Fecha: 
+                        = account.date.strftime('%d/%m/%Y')
+                      %p 
+                        %strong 
+                          Plan: 
+                        = account&.plan&.name || 'Sin plan asignado'
+                 
+                 
+            .project-cloud
+              = link_to app_plans_path do
+                %p.title-card
+                  %strong Planes
+                .col-projects
+                  - @accounts_with_plans.each_with_index do |account, index|
                     .card-project
                       %p
                         %strong 
                           Cuenta: 
-                        #{account.name}
+                        = account.name
                       %p 
                         %strong 
                           Fecha: 
-                        #{account.date.strftime('%d/%m/%Y')}
-                 
-                 
-            .project-cloud
-              %a{:href => "#"}
-                %p.title-card
-                  %strong Planes
-                .col-projects
-                  - @plans.each_with_index do |plan, index|
-                    .card-project
+                        = account.date.strftime('%d/%m/%Y')
                       %p
-                        %strong Plan
-                        #{plan.name}
-                      %p Fecha
-                      #{plan.date.strftime('%d/%m/%Y')}
-    / Button trigger modal
-    %button.btn.btn-primary{"data-target" => "#exampleModal", "data-toggle" => "modal", :type => "button"}
-      Launch demo modal
-    / Modal
-    #exampleModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "exampleModalLabel", :role => "dialog", :tabindex => "-1"}
-      .modal-dialog{:role => "document"}
-        .modal-content
-          .modal-header
-            %h5#exampleModalLabel.modal-title Modal title
-            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-              %span{"aria-hidden" => "true"} ×
-          .modal-body
-            \...
-          .modal-footer
-            %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
-            %button.btn.btn-primary{:type => "button"} Save changes
-
+                        %strong Plan:
+                        #{account.plan.name}
+                      %p 
+                        %strong Descripción:
+                      #{account.plan.description}
+    - @accounts.each_with_index do |account, index|                
+      .modal.fade{ :id => "account-#{index}","aria-hidden" => "true", "aria-labelledby" => "", :role => "dialog", :tabindex => "-1"}
+        .modal-dialog.modal-lg
+          .modal-content
+            .modal-header
+              %h4#myModalLabel.modal-title= account.name
+              %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                %span{"aria-hidden" => "true"} ×
+            .modal-body
+              = simple_form_for account, url: app_set_plan_path(account), method: :post do |f|
+                = f.input :plan_id, collection: @plans, include_blank: 'Selecciona Un Plan'
+                = f.submit 'GUARDAR'
+            -# .modal-footer
+            -#   %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+            -#   %button.btn.btn-primary{:type => "submit"} Save changes

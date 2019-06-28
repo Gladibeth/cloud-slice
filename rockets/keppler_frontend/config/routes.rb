@@ -5,6 +5,8 @@ KepplerFrontend::Engine.routes.draw do
   get '/account', to: 'app/frontend#account', as: :app_account
   get '/sortable', to: 'app/frontend#sortable', as: :app_sortable
 
+  post 'set_plan/:account_id', to: 'app/frontend#set_plan', as: :app_set_plan
+  
   namespace :admin do
     scope :frontend, as: :frontend do
       resources :themes do

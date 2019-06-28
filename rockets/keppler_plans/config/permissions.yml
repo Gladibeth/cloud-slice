@@ -1,0 +1,7 @@
+modules:
+  plans:
+    name: Plan
+    model: KepplerPlansPlan
+    actions: [
+      'index', 'create', 'update', 'destroy', 'download', 'upload', 'clone'
+    ]

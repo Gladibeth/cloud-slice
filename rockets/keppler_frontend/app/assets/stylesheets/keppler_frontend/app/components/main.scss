@@ -127,7 +127,7 @@
 
 .card-project {
   background: #f0f5d3;
-  color: #615c5c;
+  color: #615c5c !important;
   padding: 15px;
   border-radius: 6px;
   margin: 10px;
@@ -136,6 +136,7 @@
 
 .title-card {
   font-size: 25px;
+  color: #222;
 }
 
 .content-card-plan {

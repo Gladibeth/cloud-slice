@@ -12,13 +12,14 @@ module KepplerAccounts
     acts_as_list
     acts_as_paranoid
 
+    belongs_to :plan, class_name: 'KepplerPlans::Plan'
+  
     def self.index_attributes
       %i[name email]
     end
 
     def self.plans
-      where.not(name: "")
+      where.not(plan_id: nil)
     end
-
   end
 end

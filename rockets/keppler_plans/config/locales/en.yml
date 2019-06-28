@@ -1,0 +1,22 @@
+en:
+  keppler:
+    sidebar-menu:
+      keppler-plans: Plans
+      keppler-plans-submenu:
+        plans: Plans
+    permissions:
+    models:
+      singularize:
+        plan: plan
+      pluralize:
+        plans: plans
+    modules:
+      admin/plans: Plans
+    messages:
+    actions:
+  activerecord:
+    attributes:
+    errors:
+      messages:
+  errors:
+  helpers:

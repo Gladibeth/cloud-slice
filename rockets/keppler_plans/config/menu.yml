@@ -1,0 +1,9 @@
+menu:
+  keppler_plans:
+    name: Keppler Plans
+    current: ['/admin/plans/plans']
+    url_path: /admin/plans/plans
+    icon: rocket
+    model: KepplerPlans::Plan
+    environment: all
+    position: 4
