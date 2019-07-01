@@ -1,1 +1,11 @@
 modules:
+
+   server:
+      name: Server
+      model: KepplerCapsulesServer
+      actions: [
+        'index', 'create', 'update',
+        'destroy', 'download', 'upload',
+        'clone'
+      ]
+  

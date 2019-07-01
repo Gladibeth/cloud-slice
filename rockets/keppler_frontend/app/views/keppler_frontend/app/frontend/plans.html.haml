@@ -14,65 +14,66 @@
             = image_tag '/assets/app/menu_fix_logo'
           %div.container-fluid
             .content-card-plan
-            
-              #style-1.project-cloud.scrollbar.one-m
-                %p.title-card
-                  %strong Four Months
-                .sortable#sortable
-                  - @plans.each_with_index do |plan, index|
-                    .card-project
-                      %p
-                        %strong Plan
-                        #{plan.name}
-                      %p Fecha
-                      #{plan.date.strftime('%d/%m/%Y')}
-                
-                
-              #style-1.project-cloud.scrollbar.two-m
-                %p.title-card
-                  %strong Eight Months
-                .sortable#sortable
-                  - @plans.each_with_index do |plan, index|
-                    .card-project
-                      %p
-                        %strong Plan
-                        #{plan.name}
-                      %p Fecha
-                      #{plan.date.strftime('%d/%m/%Y')}
-            
-              #style-1.project-cloud.scrollbar.three-m
-                %p.title-card
-                  %strong Twelve Months
-                .sortable#sortable
-                  - @plans.each_with_index do |plan, index|
-                    .card-project
-                      %p
-                        %strong Plan
-                        #{plan.name}
-                      %p Fecha
-                      #{plan.date.strftime('%d/%m/%Y')}
-            
-              #style-1.project-cloud.scrollbar.fourt-m
-                %p.title-card
-                  %strong Defeated
-                .sortable#sortable
-                  - @plans.each_with_index do |plan, index|
-                    .card-project
-                      %p
-                        %strong Plan
-                        #{plan.name}
-                      %p Fecha
-                      #{plan.date.strftime('%d/%m/%Y')}
-    / large modal
-    #largeModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "basicModal", :role => "dialog", :tabindex => "-1"}
-      .modal-dialog.modal-lg
-        .modal-content
-          .modal-header
-            %h4#myModalLabel.modal-title Plane 1
-            %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-              %span{"aria-hidden" => "true"} ×
-          .modal-body
-            %h3 Modal Body
-          .modal-footer
-            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
-            %button.btn.btn-primary{:type => "button"} Save changes
+              
+              - @plans.each_with_index do |plan|
+                #style-1.project-cloud.scrollbar.one-m
+                  %p.title-card
+                    %strong= plan.name
+                  .plans-g#sortable
+                    - plan.accounts.each_with_index do |account, index|
+                      %a.card-project{"data-target" => "#plans-#{account.plan_id}-#{index}", "data-toggle" => "modal"}
+                        %p
+                          %strong 
+                            Cuenta: 
+                          = account.name
+                        %p 
+                          %strong 
+                            Fecha: 
+                          = account.date.strftime('%d/%m/%Y')
+                        %p 
+                          %strong Plan:
+                          = account&.plan&.name || 'SIN PLAN ASIGNADO'
+                        %p 
+                          %strong servidor:
+                          = account&.servidor || 'SIN SERVIDOR ASIGNADO'
+                        %p 
+                          %strong Descripción:
+                        #{account&.plan&.description}
+                        %p
+                          %strong 
+                            Renovado: 
+                          = account.renovate? ? 'SI' : 'NO'
+    - @plans.each_with_index do |plan|                 
+      - plan.accounts.each_with_index do |account, index|                
+        .modal.fade{ :id => "plans-#{account.plan_id}-#{index}","aria-hidden" => "true", "aria-labelledby" => "", :role => "dialog", :tabindex => "-1"}
+          .modal-dialog.modal-lg
+            .modal-content
+              .modal-header
+                %h4#myModalLabel.modal-title= account.name
+                %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                  %span{"aria-hidden" => "true"} ×
+              .modal-body
+                %p
+                  %strong 
+                    Cuenta: 
+                  = account.name
+                %p 
+                  %strong 
+                    Fecha: 
+                  = account.date.strftime('%d/%m/%Y')
+                %p 
+                  %strong Plan:
+                  = account&.plan&.name || 'Sin plan asociado'.upcase
+                %p 
+                  %strong Descripción:
+                #{account&.plan&.description}
+                %p
+                %strong 
+                  Renovado: 
+                = account.renovate? ? 'SI' : 'NO'
+                = simple_form_for account, url: app_set_plan_path(account), method: :post do |f|
+                  = f.input :renovate
+                  = f.submit 'ACTUALIZAR'
+              -# .modal-footer
+              -#   %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+              -#   %button.btn.btn-primary{:type => "submit"} Save changes

@@ -13,4 +13,9 @@ menu:
           current: ['current']
           model: KepplerCapsules::Capsule
       # begin capsules generated (don't delete)
+      - server:
+          name: servers
+          url_path: /admin/space/servers
+          current: ['admin/servers']
+          model: KepplerCapsules::Server
       # end capsules generated

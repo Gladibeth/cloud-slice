@@ -6,14 +6,16 @@ module KepplerFrontend
     layout 'layouts/keppler_frontend/app/layouts/application'
 
 
-    def home
+    def index
       @accounts = rocket('accounts', 'account').all
       @accounts_with_plans = rocket('accounts', 'account').plans
       @plans = rocket('plans', 'plan').all
+      @servers = KepplerCapsules::Server.all.map(&:name)
     end
 
     def plans
       @plans = rocket('accounts', 'account').plans
+      @plans = rocket('plans', 'plan').all
     end
 
     def set_plan
@@ -27,6 +29,8 @@ module KepplerFrontend
     end
 
     def account
+      @accounts = rocket('accounts', 'account').all
+      @plans = rocket('plans', 'plan').all
     end
 
     def sortable
@@ -35,8 +39,7 @@ module KepplerFrontend
     private
 
     def acccount_params
-      params.require(:account).permit(:plan_id)
+      params.require(:account).permit(:plan_id, :renovate, :servidor)
     end
-
   end
 end

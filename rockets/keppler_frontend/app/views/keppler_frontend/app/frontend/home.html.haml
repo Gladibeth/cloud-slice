@@ -32,16 +32,14 @@
                       %p 
                         %strong 
                           Plan: 
-                        = account&.plan&.name || 'Sin plan asignado'
-                 
-                 
+                        = account&.plan&.name || 'SIN PLAN ASIGNADO'   
             .project-cloud
               = link_to app_plans_path do
                 %p.title-card
                   %strong Planes
                 .col-projects
                   - @accounts_with_plans.each_with_index do |account, index|
-                    .card-project
+                    %a.card-project{"data-target" => "#plans-#{index}", "data-toggle" => "modal"}
                       %p
                         %strong 
                           Cuenta: 
@@ -50,12 +48,16 @@
                         %strong 
                           Fecha: 
                         = account.date.strftime('%d/%m/%Y')
-                      %p
+                      %p 
                         %strong Plan:
-                        #{account.plan.name}
+                        = account&.plan&.name || 'SIN PLAN ASIGNADO'
                       %p 
                         %strong Descripción:
-                      #{account.plan.description}
+                      #{account&.plan&.description}
+                      %p
+                      %strong 
+                        Renovado: 
+                      = account.renovate? ? 'SI' : 'NO'
     - @accounts.each_with_index do |account, index|                
       .modal.fade{ :id => "account-#{index}","aria-hidden" => "true", "aria-labelledby" => "", :role => "dialog", :tabindex => "-1"}
         .modal-dialog.modal-lg
@@ -65,9 +67,54 @@
               %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
                 %span{"aria-hidden" => "true"} ×
             .modal-body
+              %p
+                %strong 
+                  Cuenta: 
+                = account.name
+              %p 
+                %strong 
+                  Fecha: 
+                = account.date.strftime('%d/%m/%Y')
+              -# %p 
+              -#   %strong Plan:
+              -#   #{account.plan.name}
+              -# %p 
+              -#   %strong Descripción:
+              -# #{account.plan.description}
               = simple_form_for account, url: app_set_plan_path(account), method: :post do |f|
                 = f.input :plan_id, collection: @plans, include_blank: 'Selecciona Un Plan'
+                -# = f.input :renovate
                 = f.submit 'GUARDAR'
+    - @accounts.each_with_index do |account, index|                
+      .modal.fade{ :id => "plans-#{index}","aria-hidden" => "true", "aria-labelledby" => "", :role => "dialog", :tabindex => "-1"}
+        .modal-dialog.modal-lg
+          .modal-content
+            .modal-header
+              %h4#myModalLabel.modal-title= account.name
+              %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                %span{"aria-hidden" => "true"} ×
+            .modal-body
+              %p
+                %strong 
+                  Cuenta: 
+                = account.name
+              %p 
+                %strong 
+                  Fecha: 
+                = account.date.strftime('%d/%m/%Y')
+              %p 
+                %strong Plan:
+                = account&.plan&.name || 'Sin plan asociado'.upcase
+              %p 
+                %strong Descripción:
+              #{account&.plan&.description}
+              %p
+              %strong 
+                Renovado: 
+              = account.renovate? ? 'SI' : 'NO'
+              = simple_form_for account, url: app_set_plan_path(account), method: :post do |f|
+                = f.input :renovate
+                = f.submit 'ACTUALIZAR'
             -# .modal-footer
             -#   %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
             -#   %button.btn.btn-primary{:type => "submit"} Save changes

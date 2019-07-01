@@ -12,6 +12,7 @@ module KepplerPlans
     acts_as_list
     acts_as_paranoid
     
+    has_many :accounts, class_name: 'KepplerAccounts::Account'
     def self.index_attributes
       %i[name description type]
     end

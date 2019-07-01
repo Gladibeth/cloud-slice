@@ -81,9 +81,14 @@
   }
 }
 
-.sortable {
+.plans-g{
   display: grid;
   grid-template-columns: 100%;
+}
+.sortable {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 50px 0;
 }
 .content-card {
   padding: 100px 20px;

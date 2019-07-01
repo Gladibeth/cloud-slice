@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-module KepplerAccounts
-  # Account Model
-  class Account < ApplicationRecord
+module KepplerCapsules
+  # Server Model
+  class Server < ApplicationRecord
     include ActivityHistory
     include CloneRecord
     include Uploadable
@@ -11,15 +11,11 @@ module KepplerAccounts
     include Searchable
     acts_as_list
     acts_as_paranoid
+    # Begin validations area (don't delete)
+    # End validations area (don't delete
 
-    belongs_to :plan, class_name: 'KepplerPlans::Plan', optional: true
-  
     def self.index_attributes
-      %i[name email]
-    end
-
-    def self.plans
-      where.not(plan_id: nil)
+      %i[]
     end
   end
 end

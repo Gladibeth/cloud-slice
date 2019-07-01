@@ -1,1 +1,14 @@
---- []
+---
+- id: 1
+  name_field: name
+  format_field: string
+  capsule_id: 1
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2019-07-01 18:47:10.723582000 Z
+    zone: &1 !ruby/object:ActiveSupport::TimeZone
+      name: America/Caracas
+    time: 2019-07-01 14:47:10.723582000 Z
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: 2019-07-01 18:47:10.723582000 Z
+    zone: *1
+    time: 2019-07-01 14:47:10.723582000 Z
