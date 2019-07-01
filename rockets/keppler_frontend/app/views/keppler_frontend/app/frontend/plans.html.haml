@@ -36,9 +36,21 @@
                         %p 
                           %strong servidor:
                           = account&.servidor || 'SIN SERVIDOR ASIGNADO'
-                        %p 
-                          %strong Descripción:
-                        #{account&.plan&.description}
+                        -# %p 
+                        -#   %strong Descripción:
+                        -# #{account&.plan&.description}
+                        -# %p
+                        -#   %strong 
+                        -#     Usuario: 
+                        -#   = account.user_account
+                        -# %p
+                        -#   %strong 
+                        -#     Contraseña: 
+                        -#   = account.password_account
+                        -# %p
+                        -#   %strong 
+                        -#     Informacion Adicional: 
+                        -#   = account.additional
                         %p
                           %strong 
                             Renovado: 
@@ -64,9 +76,22 @@
                 %p 
                   %strong Plan:
                   = account&.plan&.name || 'Sin plan asociado'.upcase
+                %p
+                  %strong 
+                    Usuario: 
+                  = account.user_account
+                %p
+                  %strong 
+                    Contraseña: 
+                  = account.password_account
+                %p
+                  %strong 
+                    Informacion Adicional: 
+                  = account.additional
                 %p 
                   %strong Descripción:
                 #{account&.plan&.description}
+               
                 %p
                 %strong 
                   Renovado: 

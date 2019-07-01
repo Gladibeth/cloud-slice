@@ -79,6 +79,9 @@
               = simple_form_for account, url: app_set_plan_path(account), method: :post do |f|
                 = f.input :plan_id, collection: @plans, include_blank: 'Selecciona Un Plan'
                 = f.input :servidor, collection: @servers, include_blank: 'Selecciona Un Servidor'
+                = f.input :user_account
+                = f.input :password_account, as: :string
+                = f.input :additional
                 = f.submit 'GUARDAR'
     - @accounts.each_with_index do |account, index|                
       .modal.fade{ :id => "plans-#{index}","aria-hidden" => "true", "aria-labelledby" => "", :role => "dialog", :tabindex => "-1"}
@@ -93,6 +96,18 @@
                 %strong 
                   Cuenta: 
                 = account.name
+              %p
+                %strong 
+                  Usuario: 
+                = account.user_account
+              %p
+                %strong 
+                  Contraseña: 
+                = account.password_account
+              %p
+                %strong 
+                  Informacion Adicional: 
+                = account.additional
               %p 
                 %strong 
                   Fecha: 
@@ -100,6 +115,9 @@
               %p 
                 %strong Plan:
                 = account&.plan&.name || 'Sin plan asociado'.upcase
+              %p 
+                %strong servidor:
+                = account&.servidor || 'SIN SERVIDOR ASIGNADO'
               %p 
                 %strong Descripción:
               #{account&.plan&.description}

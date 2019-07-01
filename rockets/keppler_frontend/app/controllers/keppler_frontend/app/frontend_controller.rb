@@ -39,7 +39,7 @@ module KepplerFrontend
     private
 
     def acccount_params
-      params.require(:account).permit(:plan_id, :renovate, :servidor)
+      params.require(:account).permit(:plan_id, :renovate, :servidor, :user_account, :password_account, :additional)
     end
   end
 end
