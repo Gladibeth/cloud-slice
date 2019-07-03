@@ -1,5 +1,5 @@
 KepplerFrontend::Engine.routes.draw do
-  root to: 'app/frontend#index', as: :keppler
+  root to: 'app/frontend#index', as: :root
   get '/home', to: 'app/frontend#home', as: :app_home
   get '/plans', to: 'app/frontend#plans', as: :app_plans
   get '/account', to: 'app/frontend#account', as: :app_account

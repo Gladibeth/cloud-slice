@@ -1,0 +1,113 @@
+$roboto: 'Roboto', sans-serif;
+
+
+.btn_custom {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  line-height: 1.1;
+  // font-family: $quicksand;
+  // @include font(16px, $bold);
+}
+
+.btn--small {
+  padding: 8px 12px;
+  min-width: 65px;
+  font-size: 12px;
+}
+
+.btn--medium {
+  padding: 10px 14px;
+  min-width: 85px;
+  font-size: 14px;
+}
+
+.btn--large {
+  padding: 12px 16px;
+  min-width: 105px;
+  font-size: 18px;
+}
+
+.btn--filled {
+  background-color: #343a40 !important;
+  color: #fff!important;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    background-color: transparent !important;
+    border: 1px solid #343a40;
+    color: #343a40!important;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: 0.3s ease-in-out;
+  }
+}
+
+label {
+  color: #343a40 !important;
+  font-size: 13px !important;
+}
+
+.form-control {
+  &:focus {
+    border-color:  #343a40 !important;
+    outline: none !important;
+  }
+}
+
+.modal-header{
+  border-bottom: 1px solid transparent !important;
+}
+.modal-header {
+  .close {
+    margin-top: -10px !important;
+  }
+}
+
+// input[type=checkbox] + label {
+//   display: block;
+//   margin: 0.2em;
+//   cursor: pointer;
+//   padding: 0.2em;
+// }
+
+// // input[type=checkbox] {
+// //   display: none;
+// // }
+
+// input[type=checkbox] + label:before {
+//   content: "\2714";
+//   border: 0.1em solid #ccc;
+//   border-radius: 0.2em;
+//   display: inline-block;
+//   width: 1.5em;
+//   height: 1.5em;
+//   padding-left: 0.2em;
+//   padding-bottom: 0.3em;
+//   margin-right: 0.2em;
+//   vertical-align: bottom;
+//   color: transparent;
+//   transition: .2s;
+//   margin-right: 15px;
+// }
+
+// input[type=checkbox] + label:active:before {
+//   transform: scale(0);
+// }
+
+// input[type=checkbox]:checked + label:before {
+//   background-color: #343a40;
+//   border-color: #343a40;
+//   color: #fff;
+// }
+
+// input[type=checkbox]:disabled + label:before {
+//   transform: scale(1);
+//   border-color: #aaa;
+// }
+
+// input[type=checkbox]:checked:disabled + label:before {
+//   transform: scale(1);
+//   background-color: #bfb;
+//   border-color: #bfb;
+// }

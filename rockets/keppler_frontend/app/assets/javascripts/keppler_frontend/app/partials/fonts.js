@@ -2,7 +2,7 @@
 $(document).ready(function () {
     WebFontConfig = {
         google: {
-            families: ['Quicksand:300,400,500,700']
+            families: ['Roboto:400,500,700, 900']
         }
     };
     (function () {
